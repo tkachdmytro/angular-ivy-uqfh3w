@@ -1,0 +1,47 @@
+<main *ngIf="college" class="collage">
+    <div class="head_block">
+        Change Language : 
+        <select #selLang (change)="translateLanguageTo(selLang.value)">
+          <option *ngFor="let language of translate.getLangs()" [value]="language">{{ language | uppercase }}</option>
+        </select>
+        <p>{{getCurrentLng}}</p>
+    </div>
+    <section class="content-menu content-menu-border">
+        <div class="paralax"></div>
+        <div class="container header-block">
+            <div class="info-header mt-5 mt-lg-0">
+                <div class="logo-block ml-4 pl-3" *ngIf="college.photo">
+                    <img src="{{ college.photo }}" alt=""/>
+                </div>
+                <h1>{{ college?.name }}</h1>
+            </div>
+            <div class="row">
+                <nav class="d-sm-flex">
+                    <ul class="no-wrap">
+                        <li>
+                            <a [routerLink]="['/about']" class="active">{{ 'ABOUT' | translate }}</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/courses']">{{ 'COURSES' | translate }}</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/teachers']">{{ 'TEACHERS' | translate }}</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/contacts']">{{ 'CONACTS' | translate }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <section class="information pt-0">
+        <div class="container">
+            <div class="row ">
+                <div class="col-12 col-lg-12 description">
+                    <div [innerHTML]="college.about | sanitizedHtml" class="college-description"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
