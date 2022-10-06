@@ -4,7 +4,6 @@
         <select #selLang (change)="translateLanguageTo(selLang.value)">
           <option *ngFor="let language of translate.getLangs()" [value]="language">{{ language | uppercase }}</option>
         </select>
-        <p>{{getCurrentLng}}</p>
     </div>
     <section class="content-menu content-menu-border">
         <div class="paralax"></div>
